@@ -7,12 +7,14 @@ let Obj = {
     'E1', 'E2', 'E3', 'E4', 'E5',
   ],
   currentActiveCube: '',
-  lvlGenerator: function (num, ...features) {
+  Level: function (lvl) {
     let Cube = this.Cube;
-    let cubes = [];
-    for (var i = 0; i < num; i++) {
-      cubes.push(new Cube(...features))
+    for (var property in lvl) {
+      if (lvl.hasOwnProperty(property)) {
+        lvl[property] = new Cube(new Date(), false, {}, `${lvl.property}`)
+      }
     }
+    return lvl
   },
   Cube: function (id, active, assets, type) {
     this.id = id;
