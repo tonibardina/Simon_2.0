@@ -10,8 +10,10 @@ let Obj = {
   Level: function (lvl) {
     let Cube = this.Cube;
     for (var property in lvl) {
-      if (lvl.hasOwnProperty(property)) {
-        lvl[property] = new Cube(new Date(), false, {}, `${lvl.property}`)
+      if (lvl.hasOwnProperty(property) && lvl[property].length) {
+        lvl[property] = new Cube(property, false, {}, `${lvl[property]}`)
+      } else {
+        lvl[property] = 'block'
       }
     }
     return lvl
