@@ -35,13 +35,13 @@ let Obj = {
         active: 'active'
       }
     };
-    this.setStyle = function () {
+    this.setAppearence = function () {
       return this.active
         ? this.assets.images.active
         : this.assets.images.normal
     };
     this.changestate = function () {
       this.active = !this.active
-    }
+    };
   }
 }
