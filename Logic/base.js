@@ -43,5 +43,14 @@ let Obj = {
     this.changestate = function () {
       this.active = !this.active
     };
+    this.behavior = function (type) {
+      switch (type) {
+        case 'normal':
+          this.changeState();
+          break;
+        default:
+          this.changeState()
+      }
+    }
   }
 }
