@@ -1,7 +1,7 @@
 function createLevel (Obj, level, grid, sequence) {
   this.Obj = {
     grid,
-    LevelCubes: function (lvl, sequence) {
+    LevelCubes: function (level, sequence) {
       let Cube = this.Cube;
       for (var property in lvl) {
         if (lvl.hasOwnProperty(property) && lvl[property]) {
