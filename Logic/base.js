@@ -1,22 +1,33 @@
-function createLevel (Obj, level, grid, sequence) {
+function createLevel(Obj, level, grid, sequence) {
   this.Obj = {
     grid,
-    LevelCubes: function (level, sequence) {
+    level: '',
+    sequence: '',
+    createLvl: function (framework) {
       let Cube = this.Cube;
-      for (var property in lvl) {
-        if (lvl.hasOwnProperty(property) && lvl[property]) {
-          lvl[property] = new Cube(property, false, true, {}, `${lvl[property]}`)
+      for (var property in this.level) {
+        let hasProperty = this.sequence.indexOf(property);
+        let id = hasProperty ? hasProperty + 1 : 'block';
+        if (this.level.hasOwnProperty(property) && this.level[property]) {
+          this.level[property] = new Cube(id, false, {}, `${this.level[property]}`)
         } else {
-          lvl[property] = new Cube(property, false, false, {}, `block`)
+          this.level[property] = new Cube(id, false, {}, `block`)
         }
       }
+      switch (framework) {
+        case 'react-native':
+          // React native output
+          break;
+        default:
+          'none'
+      }
     },
-    level,
-    sequence: '',
+    generateSequence: function (num) {
+      // generate random positons
+    },
     Cube: function (id, active, assets, type) {
       this.id = id;
       this.active = false;
-      this.isActive = false;
       this.size = {
         height: '30px',
         width: '30px'
@@ -58,5 +69,5 @@ function createLevel (Obj, level, grid, sequence) {
         }
       }
     }
-  }  
+  }
 }
