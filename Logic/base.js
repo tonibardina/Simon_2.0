@@ -18,6 +18,12 @@ function createLevel(level) {
           break;
         case 'html':
           // html output
+          let id = document.getElementById(this.context)
+          for (let property in this.grid) {
+            id.appendChild(`
+            <button class="cube" onClick()></button>
+            `)
+          }
           break;
         default:
           'none'
