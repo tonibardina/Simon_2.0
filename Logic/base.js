@@ -21,7 +21,7 @@ function createLevel(level) {
           let id = document.getElementById(this.context)
           for (let property in this.grid) {
             id.appendChild(`
-            <button class="cube" onClick()></button>
+            <button class="cube" onClick="${this.grid[property].behavior(this.grid[property].type)}"></button>
             `)
           }
           break;
