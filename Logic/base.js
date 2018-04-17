@@ -1,20 +1,16 @@
-function createLevel(Obj, level, grid, sequence) {
+function createLevel(level) {
   this.Obj = {
-    grid: [3, 3],
-    cells: function (grid) {
-      // return all grid cells, empty or not
-    },
-    level: '',
-    sequence: '',
+    level,
+    grid: {},
     createLvl: function (framework) {
       let Cube = this.Cube;
-      for (var property in this.cells) {
+      for (var property in this.grid) {
         let hasProperty = this.sequence.indexOf(property);
         let id = hasProperty ? hasProperty + 1 : 'block';
-        if (this.cells.hasOwnProperty(property) && this.cells[property]) {
-          this.cells[property] = new Cube(id, false, {}, `${this.cells[property]}`)
+        if (this.grid.hasOwnProperty(property) && this.grid[property]) {
+          this.grid[property] = new Cube(id, false, {}, `${this.grid[property]}`)
         } else {
-          this.cells[property] = new Cube(id, false, {}, `block`)
+          this.grid[property] = new Cube(id, false, {}, `block`)
         }
       }
       switch (framework) {
@@ -25,7 +21,7 @@ function createLevel(Obj, level, grid, sequence) {
           'none'
       }
     },
-    generateSequence: function (num) {
+    generateSequence: function () {
       // generate random positons
     },
     startSequence: function () {
@@ -48,6 +44,7 @@ function createLevel(Obj, level, grid, sequence) {
           active: 'active'
         }
       };
+      this.type = type;
       this.setAppearence = function () {
         return this.active
           ? this.assets.images.active
@@ -59,8 +56,8 @@ function createLevel(Obj, level, grid, sequence) {
       this.arrowFunction = function () {
         return 'arrowww'
       }
-      this.behavior = function (type) {
-        switch (type) {
+      this.behavior = function () {
+        switch (this.type) {
           case 'normal':
             this.changeState();
             break;
