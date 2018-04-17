@@ -2,21 +2,25 @@ function createLevel(level) {
   this.Obj = {
     level,
     grid: {},
+    context: '#lvlContainer',
     createLvl: function (framework) {
       let Cube = this.Cube;
-      for (var property in this.grid) {
+      for (let property in this.grid) {
         if (this.grid.hasOwnProperty(property) && this.grid[property]) {
           this.grid[property] = new Cube(property, false, {}, `${this.grid[property]}`)
         } else {
           this.grid[property] = new Cube(property, false, {}, `block`)
         };
-        switch (framework) {
-          case 'react-native':
-            // React native output
-            break;
-          default:
-            'none'
-        }
+      }
+      switch (framework) {
+        case 'react-native':
+          // React native output
+          break;
+        case 'html':
+          // html output
+          break;
+        default:
+          'none'
       }
     },
     generateSequence: function () {
