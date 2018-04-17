@@ -5,20 +5,18 @@ function createLevel(level) {
     createLvl: function (framework) {
       let Cube = this.Cube;
       for (var property in this.grid) {
-        let hasProperty = this.sequence.indexOf(property);
-        let id = hasProperty ? hasProperty + 1 : 'block';
         if (this.grid.hasOwnProperty(property) && this.grid[property]) {
-          this.grid[property] = new Cube(id, false, {}, `${this.grid[property]}`)
+          this.grid[property] = new Cube(property, false, {}, `${this.grid[property]}`)
         } else {
-          this.grid[property] = new Cube(id, false, {}, `block`)
+          this.grid[property] = new Cube(property, false, {}, `block`)
+        };
+        switch (framework) {
+          case 'react-native':
+            // React native output
+            break;
+          default:
+            'none'
         }
-      }
-      switch (framework) {
-        case 'react-native':
-          // React native output
-          break;
-        default:
-          'none'
       }
     },
     generateSequence: function () {
